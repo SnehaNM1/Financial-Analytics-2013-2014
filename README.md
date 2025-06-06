@@ -45,6 +45,7 @@ To analyze and visualize financial data to uncover actionable insights across in
 | `Finance Analytics.pbix` | Main Power BI dashboard file |
 | `Finance Analytics.pdf` | Screenshot of the dashboard |
 | `finance_data.csv` |  Uncleaned dataset  |
+| `Cleaned_finance_data.csv` |  Cleaned dataset used to build dashboard |
 
 ---
 
