@@ -14,6 +14,7 @@ To analyze and visualize financial data to uncover actionable insights across in
 - Power BI
 - DAX (Data Analysis Expressions)
 - Microsoft Excel (for data preparation)
+- MYSQL
 
 ---
 
