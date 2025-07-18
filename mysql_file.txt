@@ -1,0 +1,90 @@
+create database finance;
+
+use demo;
+
+show tables;
+
+desc financial_data; 
+
+select * from financial_data limit 5;
+
+select sum(`Gross Sales`) from financial_data;
+
+select sum(`Profit`) from financial_data; 
+
+SELECT 
+    ROUND((SUM(Profit) / SUM(Sales)) * 100,2) AS Profit_Margin_Percentage
+FROM financial_data;
+
+select sum(Sales)/sum(`Units Sold`) as Per_Unit_Revenue from financial_data;
+
+SELECT 
+    SUM(Sales) AS total_sales,
+    SUM(Profit) AS total_profit,
+    SUM(`Units Sold`) AS total_units_sold
+FROM financial_data;
+
+SELECT 
+    Product,
+    SUM(Sales) AS total_sales
+FROM financial_data
+GROUP BY Product
+ORDER BY total_sales DESC
+LIMIT 5;
+
+SELECT 
+    Country,
+    SUM(Sales) AS total_sales,
+    SUM(Profit) AS total_profit
+FROM financial_data
+GROUP BY Country
+ORDER BY total_sales DESC;
+
+SELECT 
+    `Discount Band`,
+    SUM(Sales) AS total_sales,
+    SUM(Profit) AS total_profit,
+    SUM(`Units Sold`) AS total_units
+FROM financial_data
+GROUP BY `Discount Band`
+ORDER BY total_sales DESC;
+
+SELECT 
+    Segment,
+    SUM(Sales) AS total_sales,
+    SUM(Profit) AS total_profit
+FROM financial_data
+GROUP BY Segment
+ORDER BY total_profit DESC;
+
+SELECT 
+    Product,
+    ROUND(SUM(Profit) / NULLIF(SUM(Sales), 0) * 100, 2) AS profit_margin_percent
+FROM financial_data
+GROUP BY Product
+ORDER BY profit_margin_percent DESC;
+
+SELECT 
+    Year,
+    `Month Number`,
+    `Month Name`,
+    SUM(Sales) AS monthly_sales,
+    SUM(Sales) - LAG(SUM(Sales)) OVER (ORDER BY Year, `Month Number`) AS sales_growth
+FROM financial_data
+GROUP BY Year, `Month Number`, `Month Name`
+ORDER BY Year, `Month Number`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
